@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sammy Fernando | Web Developer</title>
+  <title>Sammy Fernando | Aspiring Network Engineer</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap API (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,162 +20,273 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 <style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-    background-color: #0d0d0d; /* Deep Black */
-    color: #f5f5f5; /* White Text */
-  }
-  section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 3rem 1rem;
-  }
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #0d0d0d; /* Deep Black */
+  color: #f5f5f5; /* White Text */
+}
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+}
 
-  /* Section Headers */
-  section h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #7e57c2, #9c27b0); /* Purple → Pink*/
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-    animation: fadeZoom 1.2s ease;
-  }
-  section h2::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #7e57c2, #9c27b0);
-    margin: 0.6rem auto 0;
-    border-radius: 2px;
-    animation: slideIn 1.5s ease;
-  }
+/* Section Headers */
+section h2 {
+  font-family: 'Orbitron', sans-serif; /* Techy font */
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #7e57c2, #9c27b0); /* Purple → Pink*/
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  animation: fadeZoom 1.2s ease;
+}
+section h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #7e57c2, #9c27b0);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+  animation: slideIn 1.5s ease;
+}
 
-  /* Hero */
-  .hero {
-    background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #111);
-    color: #f5f5f5;
-    text-align: center;
-  }
-  .hero h1 {
-    font-size: 3rem;
-    animation: fadeDown 1.5s ease-in-out;
-  }
-  .hero span {
-    color: #7e57c2; /* Accent Purple */
-  }
-  .hero p {
-    font-size: 1.3rem;
-    animation: fadeUp 2s ease-in-out;
-    color: #bdbdbd;
-  }
-  .btn-custom {
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #7e57c2, #9c27b0);
-    border: none;
-    color: white;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .btn-custom:hover {
-    transform: scale(1.05);
-  }
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #111);
+  color: #f5f5f5;
+  text-align: center;
 
-  /* Skills Marquee */
-  .skills-marquee {
-    overflow: hidden;
-    width: 100%;
-    padding: 4em;
-    position: relative;
+    /* Fade effect at top */
+position: relative;
+-webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
+-webkit-mask-repeat: no-repeat;
+-webkit-mask-size: 100% 100%;
+mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
+mask-repeat: no-repeat;
+mask-size: 100% 100%;
+}
+.hero h1 {
+  font-size: 3rem;
+  animation: fadeDown 2s ease-in-out;
+}
+.hero span {
+  color: #7e57c2; /* Accent Purple */
+}
+.hero p {
+  font-size: 1.3rem;
+  animation: fadeUp 2s ease-in-out;
+  color: #bdbdbd;
+}
+.btn-custom {
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #7e57c2, #9c27b0);
+  border: none;
+  color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-custom:hover {
+  transform: scale(1.05);
+}
 
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-repeat: no-repeat;
-    mask-size: 100% 100%;
-  }
-  .skills-track {
-    display: flex;
-    gap: 80px;
-    width: max-content;
-    animation: scrollLeft 30s linear infinite;
-    will-change: transform;
-  }
-  .skills-track div {
-    text-align: center;
-    min-width: 130px;
-  }
-  .skills-track img {
-    width: 90px;
-    height: 90px;
-    filter: brightness(0) invert(1); /* White icons */
-    transition: filter 0.3s;
-  }
-  .skills-track img:hover {
-    filter: drop-shadow(0 0 10px #000000); /* glow on hover - insert color if want */
-  }
+/* Timeline */
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding: 2rem 0;
+}
 
-  @keyframes scrollLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #7e57c2, #9c27b0);
+  border-radius: 2px;
+}
 
-  /* Projects */
-  .project-card {
-    background: #1c1c1c;
-    border: 1px solid rgba(126, 87, 194, 0.4); /* Purple border */
-    transition: transform 0.4s, box-shadow 0.4s;
-    color: #e0e0e0;
-  }
-  .project-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 0 30px rgba(3, 169, 244, 0.6);
-  }
-  .project-card h5 {
-    color: #7e57c2;
-  }
-  .project-card p {
-    color: #bdbdbd;
-  }
+.timeline-item {
+  position: relative;
+  width: 45%;
+  padding: 1.5rem 2rem;
+  background: #1c1c1c;
+  border-left: 4px solid #7e57c2;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  color: #f5f5f5;
+  box-shadow: 0 0 20px rgba(126, 87, 194, 0.3);
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  transform: translateX(-5%);
+}
+
+.timeline-item:nth-child(even) {
+  left: 55%;
+  transform: translateX(5%);
+  border-left: none;
+  border-right: 4px solid #9c27b0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #7e57c2, #9c27b0);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(126, 87, 194, 0.7);
+}
+
+.timeline-item:nth-child(odd)::before {
+  right: -10px;
+}
+
+.timeline-item:nth-child(even)::before {
+  left: -10px;
+}
+
+/* Skills Marquee */
+.skills-marquee {
+  overflow: hidden;
+  width: 100%;
+  padding: 4em;
+  position: relative;
+
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+.skills-track {
+  display: flex;
+  gap: 80px;
+  width: max-content;
+  animation: scrollLeft 30s linear infinite;
+  will-change: transform;
+}
+.skills-track div {
+  text-align: center;
+  min-width: 130px;
+}
+.skills-track img {
+  width: 90px;
+  height: 90px;
+  filter: brightness(0) invert(1); /* White icons */
+  transition: filter 0.3s;
+}
+.skills-track img:hover {
+  filter: drop-shadow(0 0 10px #000000); /* glow on hover - insert color if want */
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Projects */
+.project-card {
+  background: #1c1c1c;
+  border: 1px solid rgba(0, 0, 0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #e0e0e0;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.project-card img {
+  max-height: 160px; /* optional: keeps images consistent */
+  object-fit: contain;
+}
+
+.project-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .card-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #7e57c2;
+}
+
+.project-card .card-text {
+  flex-grow: 1; /* keeps text balanced */
+  margin-bottom: 1rem;
+  color: #bdbdbd;
+}
+
+.project-card .btn {
+  margin-top: auto; /* keeps button aligned at bottom */
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+}
+
+.project-card:hover {
+  transform: scale(1.03); /* zooms the card */
+  box-shadow: 0 0 35px rgba(3, 169, 244, 0.6);
+  z-index: 10; /* makes sure zoomed card stays above others */
+}
 
   /* Footer */
-  footer {
-    background: #0d0d0d;
-    color: #f5f5f5;
-    padding: 1rem;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-  }
+footer {
+  background: #111;
+  color: #f5f5f5;
+  padding: 1rem;
+  text-align: center;
 
-  /* Navbar */
-  .navbar {
-    background: #0d0d0d !important;
-    border-bottom: 1px solid rgba(126, 87, 194, 0.4);
-    opacity: 95%;
-  }
-  .navbar-brand {
-    color: #7e57c2 !important;
-    font-weight: 700;
-    opacity: 100% !important;
-  }
-  .nav-link {
-    color: #f5f5f5 !important;
-    opacity: 100% !important;
-  }
-  .nav-link:hover {
-    color: #eb28d4 !important;
-  }
+  /* Fade effect at top */
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+/* Navbar */
+.navbar {
+  background: #0d0d0d !important;
+  border-bottom: 1px solid rgba(126, 87, 194, 0.4);
+  opacity: 95%;
+}
+.navbar-brand {
+  color: #7e57c2 !important;
+  font-weight: 700;
+  opacity: 100% !important;
+}
+.nav-link {
+  color: #f5f5f5 !important;
+  opacity: 100% !important;
+}
+.nav-link:hover {
+  color: #eb28d4 !important;
+}
 /* Make navbar toggle icon white */
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
@@ -197,14 +311,13 @@
     100% { opacity: 1; transform: translateY(0); }
   }
 </style>
-
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">SammyDev</a>
+      <a class="navbar-brand fw-bold" href="#">DevSam</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -212,9 +325,9 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Journey">Journey</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
         </ul>
       </div>
     </div>
@@ -234,106 +347,175 @@
     <div class="container">
         <h2 class="fw-bold mb-4"  data-aos="zoom-in">About Me</h2>
         <p class="fs-5" data-aos="fade-up">
-        I am an aspiring Network Engineer with a background in Information Technology.  
+        I am a 23-year-old aspiring Network Engineer from the Philippines with a degree in Information Technology.  
         I am eager to develop secure, efficient, and reliable network systems.  
         My goal is to design and manage infrastructures that empower businesses and users to stay connected and succeed.
         </p>
     </div>
   </section>
 
-<!-- Skills -->
-<section id="skills" class="skills text-center">
+<!-- Journey / Experience -->
+<section id="Journey" class="text-center">
   <div class="container">
-    <h2 class="fw-bold mb-5" data-aos="zoom-out">Skills / Tech Stack</h2>
+    <h2 class="fw-bold mb-5" data-aos="fade-up" style="margin-top: 4rem;">My Journey</h2>
     
-    <div class="skills-marquee">
-      <div class="skills-track">
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain-wordmark.svg" alt="HTML5"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain-wordmark.svg" alt="CSS3"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" alt="JavaScript"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub"/></div>
+    <div class="timeline">
 
-        <!-- Duplicate for infinite scroll -->
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain-wordmark.svg" alt="HTML5"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain-wordmark.svg" alt="CSS3"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" alt="JavaScript"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git"/></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub"/></div>
+      <!-- Experience 1 -->
+      <div class="timeline-item mb-4" data-aos="fade-right" data-aos-delay="100">
+        <h5 class="fw-bold">Intern | Land Transportation Office</h5>
+        <p class="text-muted mb-1">Jan 2024 – May 2024</p>
+        <p>Developed professional skills and gained hands-on experience in workplace operations. Learned workflow management, clerical tasks, and processes that improved my understanding of organizational systems—knowledge that can be applied to IT and network environments.</p>
+      </div>
+
+      <!-- Experience 2 -->
+      <div class="timeline-item mb-4" data-aos="fade-left" data-aos-delay="200">
+        <h5 class="fw-bold">Team Supervisor | Philippine Statistics Authority</h5>
+        <p class="text-muted mb-1">July 2024 – February 2025</p>
+        <p>Developed strong interpersonal and public communication skills while leading a team. Gained practical knowledge in data handling, workflow coordination, and team supervision—experience that strengthens both technical and managerial abilities for future IT and network roles.</p>
+      </div>
+
+      <!-- Experience 3 -->
+      <div class="timeline-item mb-4" data-aos="fade-right" data-aos-delay="300">
+        <h5 class="fw-bold">Contact Center | SP Madrid and Associates</h5>
+        <p class="text-muted mb-1">April 2025 - August 2025</p>
+        <p>Enhanced communication skills, particularly in handling customer calls, while gaining practical knowledge of call center tools and common technical or workflow scenarios. Developed problem-solving abilities applicable to IT support and network troubleshooting environments.</p>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-4" data-aos="fade-up">Projects</h2>
-      <div class="row justify-content-center">
-        
-        <!-- E-Commerce -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card project-card shadow-sm">
-            <img src="assets/images/shopping.svg" class="card-img-top p-3" alt="E-Commerce Illustration">
-            <div class="card-body">
-              <h5 class="card-title">E-Commerce Website</h5>
-              <p class="card-text">React + Node.js + MongoDB</p>
-              <a href="#" class="btn btn-custom">View</a>
-            </div>
+<!-- Projects -->
+<section id="projects">
+  <div class="container text-center"> 
+    <h2 class="fw-bold mb-4" data-aos="fade-up">Projects</h2>
+    <div class="row justify-content-center">
+
+      <!-- Project 1 -->
+      <div class="col-lg-3 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="100">
+        <div class="card project-card shadow-sm flex-fill">
+          <img src="assets/images/shopping.svg" class="card-img-top p-3" alt="E-Commerce Illustration">
+          <div class="card-body d-flex flex-column text-center">
+            <h5 class="card-title flex-grow-0">E-Commerce Website</h5>
+            <p class="card-text flex-grow-1">React + Node.js + MongoDB</p>
+            <a href="#" class="btn btn-custom mt-auto">View</a>
           </div>
         </div>
+      </div>
 
-        <!-- Portfolio -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card project-card shadow-sm">
-            <img src="assets/images/resume.svg" class="card-img-top p-3" alt="Portfolio Illustration">
-            <div class="card-body">
-              <h5 class="card-title">Portfolio Website</h5>
-              <p class="card-text">Bootstrap + JavaScript</p>
-              <a href="#" class="btn btn-custom">View</a>
-            </div>
+      <!-- Project 2 -->
+      <div class="col-lg-3 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="200">
+        <div class="card project-card shadow-sm flex-fill">
+          <img src="assets/images/resume.svg" class="card-img-top p-3" alt="Portfolio Illustration">
+          <div class="card-body d-flex flex-column text-center">
+            <h5 class="card-title flex-grow-0">Portfolio Website</h5>
+            <p class="card-text flex-grow-1">Bootstrap + JavaScript</p>
+            <a href="#" class="btn btn-custom mt-auto">View</a>
           </div>
         </div>
+      </div>
 
-        <!-- Blog -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="card project-card shadow-sm">
-            <img src="assets/images/blogging.svg" class="card-img-top p-3" alt="Blog Illustration">
-            <div class="card-body">
-              <h5 class="card-title">Blog Platform</h5>
-              <p class="card-text">PHP + MySQL</p>
-              <a href="#" class="btn btn-custom">View</a>
-            </div>
+      <!-- Project 3 -->
+      <div class="col-lg-3 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+        <div class="card project-card shadow-sm flex-fill">
+          <img src="assets/images/blogging.svg" class="card-img-top p-3" alt="Blog Illustration">
+          <div class="card-body d-flex flex-column text-center">
+            <h5 class="card-title flex-grow-0">Blog Platform</h5>
+            <p class="card-text flex-grow-1">PHP + MySQL</p>
+            <a href="#" class="btn btn-custom mt-auto">View</a>
           </div>
         </div>
+      </div>
 
+      <!-- Project 4 -->
+      <div class="col-lg-3 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="400">
+        <div class="card project-card shadow-sm flex-fill">
+          <img src="assets/images/app.svg" class="card-img-top p-3" alt="App Illustration">
+          <div class="card-body d-flex flex-column text-center">
+            <h5 class="card-title flex-grow-0">Mobile App</h5>
+            <p class="card-text flex-grow-1">React Native + Firebase</p>
+            <a href="#" class="btn btn-custom mt-auto">View</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Skills -->
+  <section id="skills" class="skills text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-5" data-aos="zoom-out">Skills / Tech Stack</h2>
+      
+      <div class="skills-marquee">
+        <div class="skills-track">
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain-wordmark.svg" alt="HTML5"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain-wordmark.svg" alt="CSS3"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" alt="JavaScript"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub"/></div>
+
+          <!-- Duplicate for infinite scroll -->
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain-wordmark.svg" alt="HTML5"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain-wordmark.svg" alt="CSS3"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" alt="JavaScript"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git"/></div>
+          <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub"/></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="text-center" data-aos="fade-up">
-    <div class="container">
-      <h2 class="fw-bold mb-4">Contact</h2>
-      <p class="fs-5">Let’s build something together!</p>
-      <p>Email: <a href="mailto:sammyfernando2002@gmail.com" class="text-decoration-none" style="color:#33b6b6;">sammyfernando2002@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/sammy-fernando-53a030383/" class="text-decoration-none" style="color:#33b6b6;">linkedin.com/in/sammy-fernando</a></p>
-      <p>GitHub: <a href="https://github.com/samiqt02" class="text-decoration-none" style="color:#33b6b6;">github.com/samiqt02</a></p>
-    </div>
-  </section>
+<!-- Footer -->
+<footer class="text-center py-5">
+  <div class="container">
+    <p class="fs-5 mb-4" style="color: #9c27b0;">Let’s build something together!</p>
 
-  <!-- Footer -->
-  <footer>
-    <p class="mb-0">© 2025 Sammy Fernando | All Rights Reserved</p>
-  </footer>
+    <!-- Social & Contact Icons -->
+    <div class="d-flex justify-content-center gap-4">
+      <!-- Email -->
+      <a href="mailto:sammyfernando2002@gmail.com" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="35" style="filter: invert(1);">
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/sammy-fernando-53a030383/" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="35" style="filter: invert(1);">
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/samiqt02" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="35" style="filter: invert(1);">
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/sammyqt0215" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" width="35" style="filter: invert(1);">
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/sammiieqt_/" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" width="35" style="filter: invert(1);">
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@samiqt02" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok" width="35" style="filter: invert(1);">
+      </a>
+    </div>
+
+    <p class="mt-4 mb-0">© 2024 DevSam | All Rights Reserved</p>
+  </div>
+</footer>
 
   <!-- Init AOS -->
   <script>
