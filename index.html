@@ -159,17 +159,25 @@
   .navbar {
     background: #0d0d0d !important;
     border-bottom: 1px solid rgba(126, 87, 194, 0.4);
+    opacity: 95%;
   }
   .navbar-brand {
     color: #7e57c2 !important;
     font-weight: 700;
+    opacity: 100% !important;
   }
   .nav-link {
     color: #f5f5f5 !important;
+    opacity: 100% !important;
   }
   .nav-link:hover {
     color: #eb28d4 !important;
   }
+/* Make navbar toggle icon white */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  opacity: 100% !important;
+}
 
   /* Animations */
   @keyframes fadeZoom {
@@ -197,7 +205,7 @@
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">SammyDev</a>
-      <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
@@ -226,9 +234,9 @@
     <div class="container">
         <h2 class="fw-bold mb-4"  data-aos="zoom-in">About Me</h2>
         <p class="fs-5" data-aos="fade-up">
-        I am a passionate Web Developer with a background in Information Technology.  
-        I specialize in creating user-friendly, responsive, and scalable applications.  
-        My goal is to build digital solutions that help businesses and users succeed.
+        I am an aspiring Network Engineer with a background in Information Technology.  
+        I am eager to develop secure, efficient, and reliable network systems.  
+        My goal is to design and manage infrastructures that empower businesses and users to stay connected and succeed.
         </p>
     </div>
   </section>
