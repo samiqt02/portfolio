@@ -163,6 +163,25 @@ mask-size: 100% 100%;
   left: -10px;
 }
 
+@media (max-width: 768px) {
+  .timeline::before {
+    display: none; /* remove center line */
+  }
+  
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    border-left: 4px solid #7e57c2 !important; /* simple left border for all */
+    border-right: none !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-item::before {
+    display: none; /* remove the dots on mobile */
+  }
+}
+
 /* Skills Marquee */
 .skills-marquee {
   overflow: hidden;
