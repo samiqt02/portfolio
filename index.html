@@ -163,6 +163,25 @@ mask-size: 100% 100%;
   left: -10px;
 }
 
+.timeline-image {
+  display: none; /* hidden by default */
+  width: 100%;
+  max-width: 300px;
+  margin-top: 1rem;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* fade-in effect */
+}
+
+.timeline-image.show {
+  display: block;       /* ensure it displays */
+  opacity: 1;           /* fade-in effect */
+  margin: 1rem auto;    /* center the image horizontally */
+  max-width: 300px;     /* keep your max width */
+  border-radius: 10px;
+  transition: opacity 1s ease-in-out;
+}
+
 @media (max-width: 768px) {
   .timeline::before {
     display: none; /* remove center line */
@@ -221,11 +240,13 @@ mask-size: 100% 100%;
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
 @media (max-width: 768px) {
   .skills-track{
     gap: 15px;
   }
 }
+
 /* Projects */
 .project-card {
   background: #1c1c1c;
@@ -389,6 +410,9 @@ footer {
         <h5 class="fw-bold">Intern | Land Transportation Office</h5>
         <p class="text-muted mb-1">Jan 2024 – May 2024</p>
         <p>Developed professional skills and gained hands-on experience in workplace operations. Learned workflow management, clerical tasks, and processes that improved my understanding of organizational systems—knowledge that can be applied to IT and network environments.</p>
+        
+        <!-- Hidden image -->
+        <img src="assets/images/lto.jpg" class="timeline-image" alt="LTO Internship" />
       </div>
 
       <!-- Experience 2 -->
@@ -396,6 +420,9 @@ footer {
         <h5 class="fw-bold">Team Supervisor | Philippine Statistics Authority</h5>
         <p class="text-muted mb-1">July 2024 – February 2025</p>
         <p>Developed strong interpersonal and public communication skills while leading a team. Gained practical knowledge in data handling, workflow coordination, and team supervision—experience that strengthens both technical and managerial abilities for future IT and network roles.</p>
+      
+        <!-- Hidden image -->
+        <img src="assets/images/psa.jpg" class="timeline-image" alt="Philippine Statistics Authority" />
       </div>
 
       <!-- Experience 3 -->
@@ -403,6 +430,9 @@ footer {
         <h5 class="fw-bold">Contact Center | SP Madrid and Associates</h5>
         <p class="text-muted mb-1">April 2025 - August 2025</p>
         <p>Enhanced communication skills, particularly in handling customer calls, while gaining practical knowledge of call center tools and common technical or workflow scenarios. Developed problem-solving abilities applicable to IT support and network troubleshooting environments.</p>
+        
+        <!-- Hidden image -->
+        <img src="assets/images/spm.jpg" class="timeline-image" alt="SP Madrid & Associates" />
       </div>
     </div>
   </div>
@@ -547,7 +577,27 @@ footer {
       once: true,
       easing: 'ease-in-out'
     });
+      // Select all timeline items
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    timelineItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('.timeline-image');
+
+        if(img.classList.contains('show')) {
+          // Hide image if already visible
+          img.classList.remove('show');
+        } else {
+          // Optionally hide other images
+          document.querySelectorAll('.timeline-image.show').forEach(otherImg => {
+            otherImg.classList.remove('show');
+          });
+
+          // Show clicked image
+          img.classList.add('show');
+        }
+      });
+    });
   </script>
 </body>
 </html>
-
