@@ -861,7 +861,31 @@ document.addEventListener('click', e => {
   // Load saved theme
   const savedTheme = localStorage.getItem('selectedTheme');
   if (savedTheme) applyTheme(savedTheme);
+
+  // ===== HIDE ROBOT WHEN OVER FOOTER =====
+function checkRobotFooterCollision() {
+  const footer = document.querySelector('footer');
+  const robot = document.getElementById('theme-ai');
+
+  const footerRect = footer.getBoundingClientRect();
+  const robotRect = robot.getBoundingClientRect();
+
+  // If robot bottom touches footer top, hide it
+  if (robotRect.bottom >= footerRect.top) {
+    robot.style.display = 'none';
+  } else {
+    robot.style.display = 'block';
+  }
+}
+
+// Check collision on scroll
+window.addEventListener('scroll', checkRobotFooterCollision);
+
+// Also check collision on resize (for responsiveness)
+window.addEventListener('resize', checkRobotFooterCollision);
+
+// Optional: check immediately in case robot is already near footer
+checkRobotFooterCollision();
 </script>
 </body>
 </html>
-
