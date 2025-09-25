@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sammy Fernando | Aspiring Network Engineer</title>
-
+  <link rel="icon" href="assets/images/smy.png" type="image/x-icon">
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
@@ -67,14 +67,14 @@ section h2::after {
   color: #f5f5f5;
   text-align: center;
 
-    /* Fade effect at top */
-position: relative;
--webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
--webkit-mask-repeat: no-repeat;
--webkit-mask-size: 100% 100%;
-mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
-mask-repeat: no-repeat;
-mask-size: 100% 100%;
+  /* Fade effect at top */
+  position: relative;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(to top, transparent 0%, black 20%, black 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
 }
 .hero h1 {
   font-size: 3rem;
@@ -131,7 +131,10 @@ mask-size: 100% 100%;
   color: #f5f5f5;
   box-shadow: 0 0 20px rgba(126, 87, 194, 0.3);
 }
-
+.timeline-item p.text-muted {
+  color: #bdbdbd !important; /* pure white */
+  font-weight: 600;
+}
 .timeline-item:nth-child(odd) {
   left: 0;
   transform: translateX(-5%);
@@ -546,7 +549,7 @@ footer {
       </a>
 
       <!-- GitHub -->
-      <a href="https://github.com/" target="_blank">
+      <a href="#" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="35" style="filter: invert(1);">
       </a>
 
@@ -601,4 +604,3 @@ footer {
   </script>
 </body>
 </html>
-
