@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sammy Fernando | Aspiring Network Engineer</title>
+  <link rel="icon" href="assets/smy.png" type="image/x-icon">
 
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -460,14 +461,74 @@ footer {
   color:#000000
 }
 .btn-custom1:hover, .btn-custom2:hover{
+  background-color: #9a9a9a;
+  color: #7e57c2;
+}
+@media (max-width: 768px) {
+ /* Theme AI Robot in Small Screen */
+.theme-ai {
+  position: fixed;
+  bottom: 30px;
+  right: -20px;
+  width: 90px;
+  cursor: pointer;
+  text-align: center;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+.theme-ai:hover {
+  transform: scale(1.1);
+}
+
+/* Robot Image */
+.robot-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Hover Hello Animation as Chat Bubble */
+.robot-hello {
+display: none !important;
+}
+
+/* Theme Options Buttons - Pop-up animation */
+.theme-options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  bottom: 40%;
+  right: 100%; /* Move to left of robot */
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: right center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10000;
+}
+
+.theme-options.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.theme-options button {
+  font-size: .9rem;
+  padding: 3px 6px;
+}
+.btn-custom1{
+  background-color: #a3a3a3;
+  color:#fff
+}
+.btn-custom2{
+  background-color: #a3a3a3;
+  color:#000000
+}
+.btn-custom1:hover, .btn-custom2:hover{
   background-color: #d5d5d5;
   color: #7e57c2;
 }
-  @media (max-width: 768px) {
-  .theme-ai{
-    width: 70px;
-    height: 70px;
-  }
 }
 </style>
 </head>
@@ -717,15 +778,23 @@ footer {
     });
   });
 
-  // ===== THEME AI ROBOT =====
-  const themeAI = document.getElementById('theme-ai');
-  const themeOptions = themeAI.querySelector('.theme-options');
-  const themeButtons = themeAI.querySelectorAll('button[data-theme]');
+// ===== THEME AI ROBOT =====
+const themeAI = document.getElementById('theme-ai');
+const themeOptions = themeAI.querySelector('.theme-options');
+const themeButtons = themeAI.querySelectorAll('button[data-theme]');
 
-  themeAI.addEventListener('click', e => {
-    if (e.target.tagName.toLowerCase() === 'button') return;
-    themeOptions.classList.toggle('show');
-  });
+// Toggle theme options when clicking the robot
+themeAI.addEventListener('click', e => {
+  if (e.target.tagName.toLowerCase() === 'button') return; // ignore clicks on buttons
+  themeOptions.classList.toggle('show');
+});
+
+// Close theme options if clicking anywhere outside the robot
+document.addEventListener('click', e => {
+  if (!themeAI.contains(e.target)) {
+    themeOptions.classList.remove('show');
+  }
+});
 
   // ===== THEME SWITCHING FUNCTION =====
   function applyTheme(theme) {
@@ -796,4 +865,3 @@ footer {
 </script>
 </body>
 </html>
-
