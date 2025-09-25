@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sammy Fernando | Aspiring Network Engineer</title>
-  <link rel="icon" href="assets/smy.png" type="image/x-icon">
 
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -468,8 +467,8 @@ footer {
  /* Theme AI Robot in Small Screen */
 .theme-ai {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: -20px;
   width: 90px;
   cursor: pointer;
   text-align: center;
@@ -482,8 +481,8 @@ footer {
 
 /* Robot Image */
 .robot-img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   display: block;
   margin: 0 auto;
@@ -778,23 +777,23 @@ display: none !important;
     });
   });
 
-// ===== THEME AI ROBOT =====
-const themeAI = document.getElementById('theme-ai');
-const themeOptions = themeAI.querySelector('.theme-options');
-const themeButtons = themeAI.querySelectorAll('button[data-theme]');
+  // ===== THEME AI ROBOT =====
+  const themeAI = document.getElementById('theme-ai');
+  const themeOptions = themeAI.querySelector('.theme-options');
+  const themeButtons = themeAI.querySelectorAll('button[data-theme]');
 
-// Toggle theme options when clicking the robot
-themeAI.addEventListener('click', e => {
-  if (e.target.tagName.toLowerCase() === 'button') return; // ignore clicks on buttons
-  themeOptions.classList.toggle('show');
-});
+  // Toggle theme options when clicking the robot
+  themeAI.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'button') return; // ignore clicks on buttons
+    themeOptions.classList.toggle('show');
+  });
 
-// Close theme options if clicking anywhere outside the robot
-document.addEventListener('click', e => {
-  if (!themeAI.contains(e.target)) {
-    themeOptions.classList.remove('show');
-  }
-});
+  // Close theme options if clicking anywhere outside the robot
+  document.addEventListener('click', e => {
+    if (!themeAI.contains(e.target)) {
+      themeOptions.classList.remove('show');
+    }
+  });
 
   // ===== THEME SWITCHING FUNCTION =====
   function applyTheme(theme) {
@@ -806,20 +805,20 @@ document.addEventListener('click', e => {
 
     // Navbar
     document.querySelectorAll('.navbar').forEach(nav => {
-      nav.style.background = isLight ? '#7e57c2' : '#0d0d0d'; // Purple navbar
-      nav.querySelectorAll('.nav-link').forEach(link => link.style.color = isLight ? '#fff' : '#f5f5f5'); // Links white
-      nav.querySelector('.navbar-brand').style.color = isLight ? '#111' : '#7e57c2'; // Brand black
+      nav.style.background = isLight ? '#7e57c2' : '#0d0d0d';
+      nav.querySelectorAll('.nav-link').forEach(link => link.style.color = isLight ? '#fff' : '#f5f5f5');
+      nav.querySelector('.navbar-brand').style.color = isLight ? '#111' : '#7e57c2';
     });
 
     // Hero
     const hero = document.querySelector('.hero');
     hero.style.background = isLight ? '#e0e0e0' : 'linear-gradient(135deg, #0d0d0d, #1a1a1a, #111)';
     const heroHeading = hero.querySelector('h1');
-    heroHeading.style.color = isLight ? '#111' : '#f5f5f5'; // Heading black
+    heroHeading.style.color = isLight ? '#111' : '#f5f5f5';
     const heroSpan = hero.querySelector('h1 span');
-    heroSpan.style.color = isLight ? '#7e57c2' : '#7e57c2'; // Accent purple span
+    heroSpan.style.color = '#7e57c2';
     const heroPara = hero.querySelector('p');
-    heroPara.style.color = isLight ? '#111' : '#bdbdbd'; // Paragraph black
+    heroPara.style.color = isLight ? '#111' : '#bdbdbd';
 
     // Timeline items
     document.querySelectorAll('.timeline-item').forEach((item, index) => {
@@ -843,10 +842,12 @@ document.addEventListener('click', e => {
     // Skills icons
     document.querySelectorAll('.skills-track img').forEach(icon => {
       icon.style.filter = isLight ? 'none' : 'brightness(0) invert(1)';
-    }); 
+    });
+
+    // Footer
     const footer = document.querySelector('footer');
-    footer.style.background = isLight ? '#d3d3d3' : '#1a1a1a'; // light grey in light mode, dark grey in dark mode
-    footer.style.color = isLight ? '#111' : '#f5f5f5'; // text color adapts
+    footer.style.background = isLight ? '#d3d3d3' : '#1a1a1a';
+    footer.style.color = isLight ? '#111' : '#f5f5f5';
   }
 
   // Bind theme buttons
@@ -862,7 +863,53 @@ document.addEventListener('click', e => {
   // Load saved theme
   const savedTheme = localStorage.getItem('selectedTheme');
   if (savedTheme) applyTheme(savedTheme);
+
+  // ===== DRAGGABLE ROBOT WITH PERSISTENCE =====
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  // Load saved position
+  const savedX = localStorage.getItem('robotX');
+  const savedY = localStorage.getItem('robotY');
+  if (savedX && savedY) {
+    themeAI.style.left = savedX + 'px';
+    themeAI.style.top = savedY + 'px';
+    themeAI.style.position = 'fixed';
+  }
+
+  themeAI.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - themeAI.offsetLeft;
+    offsetY = e.clientY - themeAI.offsetTop;
+    themeAI.style.transition = 'none'; // remove hover animation during drag
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+
+    // Keep robot inside viewport
+    const maxX = window.innerWidth - themeAI.offsetWidth;
+    const maxY = window.innerHeight - themeAI.offsetHeight;
+    x = Math.max(0, Math.min(x, maxX));
+    y = Math.max(0, Math.min(y, maxY));
+
+    themeAI.style.left = x + 'px';
+    themeAI.style.top = y + 'px';
+    themeAI.style.position = 'fixed';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      themeAI.style.transition = '';
+      // Save position
+      localStorage.setItem('robotX', themeAI.offsetLeft);
+      localStorage.setItem('robotY', themeAI.offsetTop);
+    }
+  });
 </script>
 </body>
 </html>
-
