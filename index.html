@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sammy Fernando | Aspiring Network Engineer</title>
-  <link rel="icon" href="assets/images/smy.png" type="image/x-icon">
+
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
@@ -357,6 +357,112 @@ footer {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
   }
+
+  /* Theme AI Robot */
+.theme-ai {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  cursor: pointer;
+  text-align: center;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+.theme-ai:hover {
+  transform: scale(1.2);
+}
+
+/* Robot Image */
+.robot-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Robot Text on Chest */
+.robot-text {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #7e57c2;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Hover Hello Animation as Chat Bubble */
+.robot-hello {
+  position: absolute;
+  bottom: 90%;
+  right: 50%;
+  transform: translateX(50%);
+  background: #7e57c2;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Bubble arrow pointing down */
+.robot-hello::after {
+  content: "";
+  position: absolute;
+  top: 98%; /* bottom of the bubble */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #7e57c2 transparent transparent transparent;
+}
+
+/* Show bubble on hover */
+.theme-ai:hover .robot-hello {
+  opacity: 1;
+  transform: translateX(50%) translateY(-10px);
+}
+
+/* Theme Options Buttons - Pop-up animation */
+.theme-options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  bottom: 40%;
+  right: 100%; /* Move to left of robot */
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: right center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10000;
+}
+
+.theme-options.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.theme-options button {
+  font-size: .9rem;
+  padding: 3px 6px;
+}
+.btn-custom1{
+  background-color: #a3a3a3;
+  color:#fff
+}
+.btn-custom2{
+  background-color: #a3a3a3;
+  color:#000000
+}
+.btn-custom1:hover, .btn-custom2:hover{
+  background-color: #d5d5d5;
+  color: #7e57c2;
+}
 </style>
 </head>
 <body>
@@ -573,34 +679,114 @@ footer {
   </div>
 </footer>
 
-  <!-- Init AOS -->
-  <script>
-    AOS.init({
-      duration: 1200,
-      once: true,
-      easing: 'ease-in-out'
+<!-- Theme AI Robot -->
+<div id="theme-ai" class="theme-ai">
+  <img src="assets/images/AI1.png" alt="Theme AI Robot" class="robot-img">
+  <div class="theme-options">
+    <button class="btn btn-custom1" data-theme="light">Light</button>
+    <button class="btn btn-custom2" data-theme="dark">Dark</button>
+  </div>
+  <span class="robot-hello">Hello!</span>
+</div>
+
+<script>
+  // ===== INIT AOS =====
+  AOS.init({
+    duration: 1200,
+    once: true,
+    easing: 'ease-in-out'
+  });
+
+  // ===== TIMELINE IMAGE TOGGLE =====
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  timelineItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('.timeline-image');
+      if (img.classList.contains('show')) {
+        img.classList.remove('show');
+      } else {
+        document.querySelectorAll('.timeline-image.show').forEach(otherImg => otherImg.classList.remove('show'));
+        img.classList.add('show');
+      }
     });
-      // Select all timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
+  });
 
-    timelineItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('.timeline-image');
+  // ===== THEME AI ROBOT =====
+  const themeAI = document.getElementById('theme-ai');
+  const themeOptions = themeAI.querySelector('.theme-options');
+  const themeButtons = themeAI.querySelectorAll('button[data-theme]');
 
-        if(img.classList.contains('show')) {
-          // Hide image if already visible
-          img.classList.remove('show');
-        } else {
-          // Optionally hide other images
-          document.querySelectorAll('.timeline-image.show').forEach(otherImg => {
-            otherImg.classList.remove('show');
-          });
+  themeAI.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'button') return;
+    themeOptions.classList.toggle('show');
+  });
 
-          // Show clicked image
-          img.classList.add('show');
-        }
-      });
+  // ===== THEME SWITCHING FUNCTION =====
+  function applyTheme(theme) {
+    const isLight = theme === 'light';
+
+    // Body
+    document.body.style.backgroundColor = isLight ? '#f5f5f5' : '#0d0d0d';
+    document.body.style.color = isLight ? '#111' : '#f5f5f5';
+
+    // Navbar
+    document.querySelectorAll('.navbar').forEach(nav => {
+      nav.style.background = isLight ? '#7e57c2' : '#0d0d0d'; // Purple navbar
+      nav.querySelectorAll('.nav-link').forEach(link => link.style.color = isLight ? '#fff' : '#f5f5f5'); // Links white
+      nav.querySelector('.navbar-brand').style.color = isLight ? '#111' : '#7e57c2'; // Brand black
     });
-  </script>
+
+    // Hero
+    const hero = document.querySelector('.hero');
+    hero.style.background = isLight ? '#e0e0e0' : 'linear-gradient(135deg, #0d0d0d, #1a1a1a, #111)';
+    const heroHeading = hero.querySelector('h1');
+    heroHeading.style.color = isLight ? '#111' : '#f5f5f5'; // Heading black
+    const heroSpan = hero.querySelector('h1 span');
+    heroSpan.style.color = isLight ? '#7e57c2' : '#7e57c2'; // Accent purple span
+    const heroPara = hero.querySelector('p');
+    heroPara.style.color = isLight ? '#111' : '#bdbdbd'; // Paragraph black
+
+    // Timeline items
+    document.querySelectorAll('.timeline-item').forEach((item, index) => {
+      item.style.background = isLight ? '#e0e0e0' : '#1c1c1c';
+      item.style.color = isLight ? '#111' : '#f5f5f5';
+      if (index % 2 === 0) {
+        item.style.borderLeft = `4px solid ${isLight ? '#7e57c2' : '#7e57c2'}`;
+        item.style.borderRight = 'none';
+      } else {
+        item.style.borderRight = `4px solid ${isLight ? '#9c27b0' : '#9c27b0'}`;
+        item.style.borderLeft = 'none';
+      }
+    });
+
+    // Project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.style.background = isLight ? '#fff' : '#1c1c1c';
+      card.style.color = isLight ? '#111' : '#e0e0e0';
+    });
+
+    // Skills icons
+    document.querySelectorAll('.skills-track img').forEach(icon => {
+      icon.style.filter = isLight ? 'none' : 'brightness(0) invert(1)';
+    }); 
+    const footer = document.querySelector('footer');
+    footer.style.background = isLight ? '#d3d3d3' : '#1a1a1a'; // light grey in light mode, dark grey in dark mode
+    footer.style.color = isLight ? '#111' : '#f5f5f5'; // text color adapts
+  }
+
+  // Bind theme buttons
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      const theme = e.target.getAttribute('data-theme');
+      applyTheme(theme);
+      themeOptions.classList.remove('show');
+      localStorage.setItem('selectedTheme', theme);
+    });
+  });
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('selectedTheme');
+  if (savedTheme) applyTheme(savedTheme);
+</script>
 </body>
 </html>
