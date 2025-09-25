@@ -862,7 +862,7 @@ document.addEventListener('click', e => {
   const savedTheme = localStorage.getItem('selectedTheme');
   if (savedTheme) applyTheme(savedTheme);
 
-  // ===== HIDE ROBOT WHEN OVER FOOTER =====
+// ===== HIDE ROBOT WHEN OVER FOOTER (SMOOTH) =====
 function checkRobotFooterCollision() {
   const footer = document.querySelector('footer');
   const robot = document.getElementById('theme-ai');
@@ -870,21 +870,24 @@ function checkRobotFooterCollision() {
   const footerRect = footer.getBoundingClientRect();
   const robotRect = robot.getBoundingClientRect();
 
-  // If robot bottom touches footer top, hide it
   if (robotRect.bottom >= footerRect.top) {
-    robot.style.display = 'none';
+    robot.style.opacity = '0';
+    robot.style.pointerEvents = 'none'; // disable interaction
   } else {
-    robot.style.display = 'block';
+    robot.style.opacity = '1';
+    robot.style.pointerEvents = 'auto';
   }
 }
 
-// Check collision on scroll
-window.addEventListener('scroll', checkRobotFooterCollision);
+// Add smooth transition via JS or CSS
+const robot = document.getElementById('theme-ai');
+robot.style.transition = 'opacity 0.3s ease-in-out';
 
-// Also check collision on resize (for responsiveness)
+// Check on scroll and resize
+window.addEventListener('scroll', checkRobotFooterCollision);
 window.addEventListener('resize', checkRobotFooterCollision);
 
-// Optional: check immediately in case robot is already near footer
+// Initial check
 checkRobotFooterCollision();
 </script>
 </body>
