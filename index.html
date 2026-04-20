@@ -308,6 +308,22 @@ section h2::after {
               #0d0d0d;
   position: relative;
   overflow: hidden;
+  margin-top: -5rem;
+  padding-top: 8rem;
+  
+  /* FADE EFFECT AT TOP AND BOTTOM */
+  -webkit-mask-image: 
+    linear-gradient(to top, transparent 0%, black 40%, black 80%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%, 100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-image: 
+    linear-gradient(to top, transparent 0%, black 5%, black 85%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%, 100% 100%;
+  mask-composite: intersect;
 }
 
 #certificates::before {
@@ -750,19 +766,19 @@ section h2::after {
   }
 }
 
-/* Footer */
+/* Footer - PERFECT top fade (will now show properly) */
 footer {
   background: #111;
   color: #f5f5f5;
-  padding: 1rem;
+  padding: 3rem 1rem; /* Increased padding for better visibility */
   text-align: center;
 
   /* Fade effect at top */
   position: relative;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%);
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
