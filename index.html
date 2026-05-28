@@ -308,7 +308,7 @@ section h2::after {
               #0d0d0d;
   position: relative;
   overflow: hidden;
-  padding-top: 5rem;
+  padding-top: 2rem;
 }
 
 #certificates::before {
@@ -998,7 +998,7 @@ display: none !important;
   <section id="hero" class="hero">
     <div class="container">
       <h1 class="fw-bold">Hi, I’m <span>Sammy Fernando</span></h1>
-      <p class="lead">Aspiring Network Engineer • Problem Solver • Tech Enthusiast</p>
+      <p class="lead">Aspiring Cybersecurity Engineer • Problem Solver • Tech Enthusiast</p>
       <a href="#projects" class="btn btn-custom mt-3" data-aos="zoom-in">See My Work</a>
     </div>
   </section>
@@ -1007,11 +1007,11 @@ display: none !important;
   <section id="about" class="text-center">
     <div class="container">
         <h2 class="fw-bold mb-4"  data-aos="zoom-in">About Me</h2>
-        <p class="fs-5" data-aos="fade-up">
-        I am a 24-year-old aspiring Network Engineer from the Philippines with a degree in Information Technology.  
-        I am eager to develop secure, efficient, and reliable network systems.  
-        My goal is to design and manage infrastructures that empower businesses and users to stay connected and succeed.
-        </p>
+          <p class="fs-5" data-aos="fade-up">
+            I am a 24-year-old aspiring Cybersecurity Engineer from the Philippines with a degree in Information Technology. 
+            I am deeply eager to develop secure, resilient, and reliable systems.
+            My goal is to protect digital architectures, manage vulnerability mitigation protocols, and defend critical infrastructures to empower businesses and users to operate safely in an evolving threat landscape.
+          </p>
     </div>
   </section>
 
@@ -1053,11 +1053,11 @@ display: none !important;
       </div>
 
 
-      <!-- Experience 3 -->
+      <!-- Experience 4 -->
       <div class="timeline-item mb-4" data-aos="fade-right" data-aos-delay="300">
         <h5 class="fw-bold">Customer Advisor I | CONCENTRIX</h5>
         <p class="text-muted mb-1">October 2025 - January 2026</p>
-        <p>Enhanced communication skills, particularly in handling customer calls, while gaining practical knowledge of call center tools and common technical or workflow scenarios. Developed problem-solving abilities applicable to IT support and network troubleshooting environments.</p>
+        <p>Managed real-time inquiries for a global account exclusively via live chat. Efficiently multitasked across multiple concurrent chat sessions to resolve customer concerns, providing occasional foundational technical troubleshooting.</p>        
         
         <!-- Hidden image -->
         <img src="assets/images/cnx.jpg" class="timeline-image" alt="SP Madrid & Associates" />
@@ -1255,8 +1255,42 @@ display: none !important;
           <div class="cert-title">Foundations of Cybersecurity</div>
           <div class="cert-desc">Core cybersecurity concepts including threat landscapes, security frameworks, network protection strategies, and fundamental principles of data security.</div>
           <div class="cert-footer">
-            <span class="cert-date">In Progress</span>
+            <span class="cert-date">Completed</span>
             <span class="cert-badge">Security</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. AWS Networking Basics -->
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="600">
+        <div class="cert-ribbon">Verified</div>
+        <div class="cert-inner">
+          <div class="cert-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M5.44 14.65A4 4 0 0 1 5 14a4 4 0 0 1 2.5-3.72M20.72 11A4 4 0 0 0 17.5 9a3.81 3.81 0 0 0-.5.06A6 6 0 0 0 5.44 11M16 21H7a4 4 0 0 1 0-8h9a4 4 0 0 1 0 8z"/><circle cx="12" cy="17" r="1"/></svg>
+          </div>
+          <div class="cert-issuer">Amazon Web Services (AWS)</div>
+          <div class="cert-title">AWS Networking Basics</div>
+          <div class="cert-desc">Covers fundamental cloud infrastructure networking concepts, including Virtual Private Clouds (VPC), subnets, routing tables, gateways, and security groups.</div>
+          <div class="cert-footer">
+            <span class="cert-date">Completed</span>
+            <span class="cert-badge">AWS Cloud</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Intro to AD DS -->
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="700">
+        <div class="cert-ribbon">Verified</div>
+        <div class="cert-inner">
+          <div class="cert-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M12 2v8M5 10h14M5 10v4M19 10v4M2 18h6v4H2zm12 0h6v4h-6zM9 2h6v4H9z"/></svg>
+          </div>
+          <div class="cert-issuer">Microsoft</div>
+          <div class="cert-title">Introduction to AD DS</div>
+          <div class="cert-desc">Explores foundational knowledge of Active Directory Domain Services, including user identity governance, object management, domain controllers, and Group Policies.</div>
+          <div class="cert-footer">
+            <span class="cert-date">Completed</span>
+            <span class="cert-badge">Microsoft</span>
           </div>
         </div>
       </div>
@@ -1265,9 +1299,9 @@ display: none !important;
 
     <!-- Stats row -->
     <div class="cert-stats d-inline-flex" data-aos="fade-up" data-aos-delay="200">
-      <div><span class="cert-stat-num">5</span><span class="cert-stat-label">Completed</span></div>
-      <div><span class="cert-stat-num">1</span><span class="cert-stat-label">In Progress</span></div>
-      <div><span class="cert-stat-num">3</span><span class="cert-stat-label">Platforms</span></div>
+      <div><span class="cert-stat-num">8</span><span class="cert-stat-label">Completed</span></div>
+      <div><span class="cert-stat-num">0</span><span class="cert-stat-label">In Progress</span></div>
+      <div><span class="cert-stat-num">5</span><span class="cert-stat-label">Platforms</span></div>
     </div>
   </div>
 </section>
@@ -1654,12 +1688,15 @@ class PDFModalManager {
     this.closeBtn = document.getElementById('pdfModalClose');
     
     this.certificates = {
-      'tesda': { title: 'TESDA CSS NC II', pdf: 'assets/certificates/tesda-css-nc2.pdf' },
+      'tesda': { title: 'TESDA CSS NC II', pdf: 'assets/certificates/NCII.pdf' },
       'itops': { title: 'IT Operations (Concentrix)', pdf: 'assets/certificates/it-operations.pdf' },
       'asset': { title: 'IT Asset Management', pdf: 'assets/certificates/it-asset-management.pdf' },
       'remedy': { title: 'Remedy Ticket Management', pdf: 'assets/certificates/remedy-ticket.pdf' },
       'incident': { title: 'Incident Management', pdf: 'assets/certificates/incident-management.pdf' },
-      'cybersec': { title: 'Foundations of Cybersecurity (In Progress)', pdf: 'assets/certificates/cybersecurity-progress.pdf' }
+      'cybersec': { title: 'Foundations of Cybersecurity', pdf: 'assets/certificates/Coursera.pdf' },
+      'AWS': { title: 'AWS Networking Basics', pdf: 'assets/certificates/AWS.pdf' },
+      'ADDS': { title: 'Introduction to AD DS', pdf: 'assets/certificates/ADDS.pdf' },
+      
     };
     
     this.init();
@@ -1672,7 +1709,7 @@ class PDFModalManager {
 
   bindCertCards() {
     document.querySelectorAll('.cert-card').forEach((card, index) => {
-      const certKey = ['tesda', 'itops', 'asset', 'remedy', 'incident', 'cybersec'][index];
+      const certKey = ['tesda', 'itops', 'asset', 'remedy', 'incident', 'cybersec', 'AWS', 'ADDS'][index];
       card.dataset.cert = certKey;
       
       card.addEventListener('click', () => {
