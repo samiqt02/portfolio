@@ -101,6 +101,20 @@ section h2::after {
   transform: scale(1.05);
 }
 
+/* About section responsive text */
+.about-text {
+  font-size: 1.25rem; /* Desktop size */
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .about-text {
+    font-size: 1rem; /* Smaller on phones */
+    line-height: 1.6;
+    text-align: justify;
+  }
+}
+
 /* Timeline */
 .timeline {
   position: relative;
@@ -1007,7 +1021,7 @@ display: none !important;
   <section id="about" class="text-center">
     <div class="container">
         <h2 class="fw-bold mb-4"  data-aos="zoom-in">About Me</h2>
-          <p class="fs-5" data-aos="fade-up">
+          <p class="about-text" data-aos="fade-up">
             I am a 24-year-old aspiring Cybersecurity Engineer from the Philippines with a degree in Information Technology. 
             I am deeply eager to develop secure, resilient, and reliable systems.
             My goal is to protect digital architectures, manage vulnerability mitigation protocols, and defend critical infrastructures to empower businesses and users to operate safely in an evolving threat landscape.
@@ -1056,11 +1070,21 @@ display: none !important;
       <!-- Experience 4 -->
       <div class="timeline-item mb-4" data-aos="fade-right" data-aos-delay="300">
         <h5 class="fw-bold">Customer Advisor I | CONCENTRIX</h5>
-        <p class="text-muted mb-1">October 2025 - January 2026</p>
-        <p>Managed real-time inquiries for a global account exclusively via live chat. Efficiently multitasked across multiple concurrent chat sessions to resolve customer concerns, providing occasional foundational technical troubleshooting.</p>        
+        <p class="text-muted mb-1">October 2025 - May 2026</p>
+        <p>Managed real-time inquiries for a global account exclusively via live chat/call. Efficiently multitasked across multiple concurrent chat sessions to resolve customer concerns, providing occasional foundational technical troubleshooting.</p>        
         
         <!-- Hidden image -->
         <img src="assets/images/cnx.jpg" class="timeline-image" alt="SP Madrid & Associates" />
+      </div>
+
+      <!-- Experience 5 -->
+      <div class="timeline-item mb-4" data-aos="fade-right" data-aos-delay="300">
+        <h5 class="fw-bold">Service Desk Analyst | UNISYS Corporations</h5>
+        <p class="text-muted mb-1">May 2026 - Present</p>
+        <p>Provides first-level technical support for global users by diagnosing and resolving hardware, software, network, and account-related issues. Utilizes ServiceNow, Sailpoint/OKTA, Active Directory, and Splunk to manage incidents, troubleshoot technical problems, and ensure timely resolution in accordance with service level agreements (SLAs).</p>        
+        
+        <!-- Hidden image -->
+        <img src="assets/images/unisys.jpg" class="timeline-image" alt="SP Madrid & Associates" />
       </div>
     </div>
   </div>
@@ -1246,7 +1270,7 @@ display: none !important;
 
       <!-- 6. Foundations of Cybersecurity -->
       <div class="cert-card" data-aos="fade-up" data-aos-delay="600">
-        <div class="cert-ribbon">Ongoing</div>
+        <div class="cert-ribbon">Verified</div>
         <div class="cert-inner">
           <div class="cert-icon-wrap">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -1295,13 +1319,64 @@ display: none !important;
         </div>
       </div>
 
+            <!-- 9. CBROPS -->
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="700">
+        <div class="cert-ribbon">Verified</div>
+        <div class="cert-inner">
+          <div class="cert-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="cert-issuer">Microsoft</div>
+          <div class="cert-title">200-201: Understanding Cisco Cybersecurity Operations Fundamentals (CBROPS)</div>
+          <div class="cert-desc">Develops foundational cybersecurity operations skills including security monitoring, incident response, network intrusion analysis, security policies, and threat detection techniques used in Security Operations Centers (SOC).</div>
+          <div class="cert-footer">
+            <span class="cert-date">Completed</span>
+            <span class="cert-badge">Unisys | Skillsoft</span>
+          </div>
+        </div>
+      </div>
+
+            <!-- 10. CASP -->
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="700">
+        <div class="cert-ribbon">Verified</div>
+        <div class="cert-inner">
+          <div class="cert-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="cert-issuer">Microsoft</div>
+          <div class="cert-title">CAS-004: CompTIA Advanced Security Practitioner (CASP+)</div>
+          <div class="cert-desc">Focuses on advanced enterprise security architecture, risk management, cryptographic solutions, governance, security operations, and technical leadership for complex cybersecurity environments.</div>
+          <div class="cert-footer">
+            <span class="cert-date">Completed</span>
+            <span class="cert-badge">Unisys | Skillsoft</span>
+          </div>
+        </div>
+      </div>
+
+            <!-- 11. CYSA -->
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="700">
+        <div class="cert-ribbon">Verified</div>
+        <div class="cert-inner">
+          <div class="cert-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="cert-issuer">Microsoft</div>
+          <div class="cert-title">CS0-003: COMPTIA CYBERSECURITY ANALYST (CYSA+)</div>
+          <div class="cert-desc">Covers threat and vulnerability management, security monitoring, threat intelligence, incident response, forensic analysis, and proactive defense against cybersecurity threats.</div>
+          <div class="cert-footer">
+            <span class="cert-date">Completed</span>
+            <span class="cert-badge">Unisys | Skillsoft</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Stats row -->
     <div class="cert-stats d-inline-flex" data-aos="fade-up" data-aos-delay="200">
-      <div><span class="cert-stat-num">8</span><span class="cert-stat-label">Completed</span></div>
+      <div><span class="cert-stat-num">11</span><span class="cert-stat-label">Completed</span></div>
       <div><span class="cert-stat-num">0</span><span class="cert-stat-label">In Progress</span></div>
-      <div><span class="cert-stat-num">5</span><span class="cert-stat-label">Platforms</span></div>
+      <div><span class="cert-stat-num">6</span><span class="cert-stat-label">Platforms</span></div>
     </div>
   </div>
 </section>
@@ -1696,6 +1771,9 @@ class PDFModalManager {
       'cybersec': { title: 'Foundations of Cybersecurity', pdf: 'assets/certificates/Coursera.pdf' },
       'AWS': { title: 'AWS Networking Basics', pdf: 'assets/certificates/AWS.pdf' },
       'ADDS': { title: 'Introduction to AD DS', pdf: 'assets/certificates/ADDS.pdf' },
+      'CBROPS': { title: 'Introduction to AD DS', pdf: 'assets/certificates/CBROPS.pdf' },
+      'CASP': { title: 'Introduction to AD DS', pdf: 'assets/certificates/CASP.pdf' },
+      'CYSA': { title: 'CS0-003: COMPTIA CYBERSECURITY ANALYST (CYSA+)', pdf: 'assets/certificates/CYSA.pdf' },
       
     };
     
@@ -1709,7 +1787,7 @@ class PDFModalManager {
 
   bindCertCards() {
     document.querySelectorAll('.cert-card').forEach((card, index) => {
-      const certKey = ['tesda', 'itops', 'asset', 'remedy', 'incident', 'cybersec', 'AWS', 'ADDS'][index];
+      const certKey = ['tesda', 'itops', 'asset', 'remedy', 'incident', 'cybersec', 'AWS', 'ADDS', 'CBROPS', 'CASP', 'CYSA'][index];
       card.dataset.cert = certKey;
       
       card.addEventListener('click', () => {
