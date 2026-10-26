@@ -51,6 +51,17 @@
         radial-gradient(circle at 85% 85%, rgba(156, 39, 176, 0.12) 0%, transparent 45%);
     }
 
+    /* Dynamic Canvas Background */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     /* Container for Layout */
     .app-container {
       display: grid;
@@ -646,6 +657,9 @@
 </head>
 <body>
 
+  <!-- Dynamic Moving Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
   <div class="app-container">
     
     <!-- Top Header -->
@@ -966,6 +980,147 @@
         toast.classList.remove('show');
       }, 2500);
     }
+
+     // Interactive Animated Violet & Magenta Canvas Particles Background
+    window.onload = function () {
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // Mouse tracking for soft interactive repulsion / attraction
+      const mouse = { x: null, y: null, radius: 150 };
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      // Particle Definition
+      const particleCount = Math.min(80, Math.floor((width * height) / 18000));
+      const particles = [];
+
+      const colors = [
+        'rgba(126, 87, 194, ',  /* Purple accent */
+        'rgba(156, 39, 176, ',  /* Magenta accent */
+        'rgba(235, 40, 212, ',  /* Glowing pink */
+        'rgba(186, 104, 200, '   /* Violet tint */
+      ];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          radius: Math.random() * 2.5 + 1,
+          colorBase: colors[Math.floor(Math.random() * colors.length)],
+          alpha: Math.random() * 0.6 + 0.2,
+          pulseSpeed: Math.random() * 0.02 + 0.005
+        });
+      }
+
+      let waveOffset = 0;
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Ambient radial glowing pulses in background
+        const radGrad1 = ctx.createRadialGradient(width * 0.2, height * 0.2, 0, width * 0.2, height * 0.2, width * 0.45);
+        radGrad1.addColorStop(0, 'rgba(126, 87, 194, 0.12)');
+        radGrad1.addColorStop(1, 'rgba(13, 13, 13, 0)');
+        ctx.fillStyle = radGrad1;
+        ctx.fillRect(0, 0, width, height);
+
+        const radGrad2 = ctx.createRadialGradient(width * 0.8, height * 0.8, 0, width * 0.8, height * 0.8, width * 0.45);
+        radGrad2.addColorStop(0, 'rgba(235, 40, 212, 0.09)');
+        radGrad2.addColorStop(1, 'rgba(13, 13, 13, 0)');
+        ctx.fillStyle = radGrad2;
+        ctx.fillRect(0, 0, width, height);
+
+        // Animated subtle sine wave grid lines
+        waveOffset += 0.01;
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(126, 87, 194, 0.05)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < height; i += 60) {
+          ctx.moveTo(0, i + Math.sin(waveOffset + i * 0.01) * 15);
+          ctx.lineTo(width, i + Math.cos(waveOffset + i * 0.01) * 15);
+        }
+        ctx.stroke();
+
+        // Draw and update particle constellation
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+
+          // Move
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Pulse opacity
+          p.alpha += Math.sin(waveOffset * 2) * p.pulseSpeed;
+          let currentAlpha = Math.max(0.1, Math.min(0.85, p.alpha));
+
+          // Screen wrap/bounce
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Mouse interactive nudge
+          if (mouse.x !== null && mouse.y !== null) {
+            let dx = mouse.x - p.x;
+            let dy = mouse.y - p.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              let force = (mouse.radius - dist) / mouse.radius;
+              p.x -= (dx / dist) * force * 2;
+              p.y -= (dy / dist) * force * 2;
+            }
+          }
+
+          // Draw node particle
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.colorBase + currentAlpha + ')';
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = 'rgba(235, 40, 212, 0.6)';
+          ctx.fill();
+          ctx.shadowBlur = 0; // reset blur
+
+          // Connect adjacent particles
+          for (let j = i + 1; j < particles.length; j++) {
+            let p2 = particles[j];
+            let dx = p.x - p2.x;
+            let dy = p.y - p2.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 130) {
+              ctx.beginPath();
+              let lineAlpha = (1 - dist / 130) * 0.25;
+              ctx.strokeStyle = 'rgba(156, 39, 176, ' + lineAlpha + ')';
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    };
   </script>
 </body>
 </html> 
